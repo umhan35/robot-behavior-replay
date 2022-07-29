@@ -1,0 +1,8 @@
+# Takes in a string of topics to be logged separated by a colon ':', i.e. "/counter:/clock"
+std_msgs/String topics
+---
+# The result will be all the topics logged during the duration of the action.
+std_msgs/String topics_logged
+---
+# feedback will be composed of all the messages received
+std_msgs/String msgs_received

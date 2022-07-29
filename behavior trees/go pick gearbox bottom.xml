@@ -1,0 +1,51 @@
+<root>
+    <BehaviorTree ID="go pick gearbox bottom">
+        <Fallback name="go pick gearbox bottom">
+
+            <Sequence name="go pick gearbox bottom">
+<!--                <Action ID="tilt projector for navigation" name="" />-->
+<!--                <RetryUntilSuccesful num_attempts="3" name="">-->
+<!--                    <Action ID="move to" place="gearbox bottom station" name="move to gearbox bottom station" />-->
+<!--                </RetryUntilSuccesful>-->
+
+                <RetryUntilSuccesful num_attempts="3" name="">
+                    <Sequence name="">
+                        <Sequence name="detect gearbox bottom">
+<!--                            <Action ID="lift torso" name="" />-->
+                            <Action ID="look at table" name="" />
+                            <Action ID="detect gearbox bottom" output="{object pose}" points="{object point cloud}" cluster_points="{cluster points}" />
+                            <Action ID="project point cloud" name="project perception results" white="{cluster points}" green="{object point cloud}" />
+                        </Sequence>
+                        <Fallback name="pick gearbox bottom">
+                            <Sequence name="pick gearbox bottom">
+                                <Action ID="convert to grasp pose" name="" from="{object pose}" output="{grasp pose}" />
+                                <Action ID="scan scene" name="scan scene for collision avoidance" />
+                                <!--                                <Action ID="attach object" object_name="gearbox bottom" name="" />-->
+                                <Action ID="look at" name="look at gearbox bottom" pose="{object pose}" />
+                                <Action ID="open gripper" name="prepare to grasp" />
+                                <!--                                <Action ID="reach" name="approach for grasp pose" pose="{grasp pose}" shift_z="0.2" />-->
+                                <Action ID="reach" name="approach grasp pose" pose="{grasp pose}" shift_z="0.1" />
+                                <Action ID="say" what="Ok. I picked up a gearbox bottom from here." speed="0.85"/>
+                                <Action ID="allow partial collision" where="{object pose}" width="0.2" padding="0.1" />
+                                <Action ID="reach" name="reach grasp pose" pose="{grasp pose}" shift_z="-0.03" />
+                                <Action ID="close gripper" name="grasp gearbox bottom" />
+<!--                                <Condition ID="check grasped" name="check if grasped" />-->
+                                <Action ID="reach" name="back to approach pose" pose="{grasp pose}" shift_z="0.025" />
+                                <!--                                <Action ID="reach" name="back to approach pose" pose="{grasp pose}" shift_z="0.2" />-->
+                                <Action ID="retreat arm" name="" />
+<!--                                <Action ID="clear point cloud projection" name="remove projection" />-->
+<!--                                <Action ID="tilt projector for navigation" name="" />-->
+                            </Sequence>
+
+                            <ForceFailure name="reset arm">
+                                <Action ID="retreat arm" name="" />
+                            </ForceFailure>
+                        </Fallback>
+                    </Sequence>
+                </RetryUntilSuccesful>
+            </Sequence>
+
+            <Action ID="ask" name="" what="unable pick gearbox bottom" />
+        </Fallback>
+    </BehaviorTree>
+</root>

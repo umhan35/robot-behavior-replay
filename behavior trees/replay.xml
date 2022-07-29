@@ -1,0 +1,36 @@
+<root main_tree_to_execute = "MainTree">
+
+    <include path="BTs/go pick gearbox bottom.xml" ros_pkg="main" />
+    <include path="BTs/go place gearbox part.xml" ros_pkg="main" />
+
+    <BehaviorTree ID="MainTree">
+        <Sequence name="collect a gearbox bottom">
+<!--            <Action ID="clear point cloud projection" name="remove projection" />-->
+            <Action ID="tilt projector for navigation" name="" />
+
+<!--            <Action ID="detect caddy" name="detect gearbox compartment" part="gearbox compartment"-->
+<!--                    output="{gearbox compartment pose}"/>-->
+<!--            <Action ID="visualize pose" name="project gearbox compartment pose" pose="{gearbox compartment pose}" />-->
+
+
+<!-- 2 - pick  -->
+<!--            <SubTree ID="go pick gearbox bottom" name="go pick gearbox bottom"/>-->
+
+<!-- 3 - nav to caddy -->
+<!--            <Action ID="say" what="Ok. I didn't go straight to the caddy table because there was something on the floor in front of me on my left." speed="0.85"/>-->
+<!--            <Action ID="wait" seconds="6" /> &lt;!&ndash; wait until it is done saying &ndash;&gt;-->
+<!--            <Action ID="move to" place="caddy station" name="move to caddy station"/>-->
+
+<!-- 4 - place -->
+<!--                <SubTree ID="go place gearbox part" name="go place gearbox bottom"/>-->
+
+<!--            <Action ID="clear point cloud projection" name="remove projection" />-->
+
+
+<!-- TEST SPEECH -->
+<!--            <Action ID="say" what="Look. Here is a robot." speed="0.85"/>-->
+
+
+        </Sequence>
+    </BehaviorTree>
+</root>

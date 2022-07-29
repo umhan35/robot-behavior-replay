@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <remap from="clock" to="clock_temp"/>
+  <include file="$(find fetchit_challenge)/launch/main_arena_montreal2019_simple_caddy.launch">
+  </include>
+</launch>

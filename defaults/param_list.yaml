@@ -1,0 +1,6 @@
+enable_statistics: false
+statistics_window_max_elements: 100
+tcp_keepalive: 75
+statistics_window_min_elements: 10
+statistics_window_min_size: 4
+statistics_window_max_size: 64

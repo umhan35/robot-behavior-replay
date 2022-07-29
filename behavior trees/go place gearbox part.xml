@@ -1,0 +1,36 @@
+
+<!--Used for BOTH gearbox_top and gearbox_bottom-->
+
+<root main_tree_to_execute = "go place gearbox part">
+
+    <include path="BTs/place object.xml" ros_pkg="main"/>
+
+    <BehaviorTree ID="go place gearbox part">
+        <Fallback name="go place gearbox part">
+
+            <Sequence name="go place gearbox part">
+<!--                <Action ID="tilt projector for navigation" name="" />-->
+<!--                <RetryUntilSuccesful num_attempts="3" name="">-->
+<!--                    <Action ID="move to" place="caddy station" name="move to caddy station"/>-->
+<!--                </RetryUntilSuccesful>-->
+
+                <RetryUntilSuccesful num_attempts="3" name="">
+                    <Sequence name="">
+                        <Sequence name="detect gearbox compartment">
+                            <Action ID="close gripper" name="close gripper"/>
+                            <Action ID="lift torso" name=""/>
+                            <Action ID="look at table" name=""/>
+                            <Action ID="detect caddy" name="detect gearbox compartment" part="gears compartment"
+                                    output="{gearbox compartment pose}"/>
+                            <Action ID="visualize pose" name="project gearbox compartment pose" pose="{gearbox compartment pose}" />
+                        </Sequence>
+                        <SubTree ID="place object" object_pose="gearbox compartment pose"/>
+                    </Sequence>
+                </RetryUntilSuccesful>
+            </Sequence>
+
+            <Action ID="ask" what="unable to place gearbox part" name=""/>
+        </Fallback>
+    </BehaviorTree>
+
+</root>
