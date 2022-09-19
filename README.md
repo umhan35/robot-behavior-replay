@@ -1,6 +1,6 @@
 # Robot Behavior Replay Implementation
 
-This repo contains sample code for the AI-HRI 2022 submission of "Robot Behavior Replay Implementation for Past Behavior Explanation" by Zhao Han, Tom Williams, and Holly A. Yanco.
+This repo contains sample code for the AI-HRI 2022 paper of "[Mixed-Reality Robot Behavior Replay: A System Implementation](https://zhaohanphd.com/publications/aihri22-mixed-reality-robot-behavior-replay-a-system-implementation/)" by Zhao Han, Tom Williams, and Holly A. Yanco.
 
 This ROS package was tested with ROS Melodic on Ubuntu 18.04.
 
